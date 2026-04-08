@@ -19,14 +19,16 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "docs:dev":"cd docs && pnpm dev",
-    "docs:preview":"cd docs && pnpm preview",
-    "docs:build":"cd docs && pnpm build"
+    "docs:dev": "cd docs && pnpm dev",
+    "docs:preview": "cd docs && pnpm preview",
+    "docs:build": "cd docs && pnpm build"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
     "@electron-toolkit/utils": "^4.0.0",
-    "electron-updater": "^6.3.9"
+    "electron-updater": "^6.3.9",
+    "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "3.0.0",
