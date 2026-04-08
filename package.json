@@ -28,10 +28,13 @@
     "@electron-toolkit/utils": "^4.0.0",
     "@element-plus/icons-vue": "^2.3.2",
     "@tailwindcss/vite": "^4.2.2",
+    "dayjs": "^1.11.20",
     "electron-updater": "^6.3.9",
     "element-plus": "^2.13.6",
+    "lodash-es": "^4.18.1",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
+    "radash": "^12.1.1",
     "tailwindcss": "^4.2.2",
     "vue-router": "^5.0.4"
   },

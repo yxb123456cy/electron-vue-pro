@@ -20,18 +20,27 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.2.2
         version: 4.2.2(vite@7.3.1(@types/node@22.19.15)(jiti@2.6.1)(lightningcss@1.32.0)(sass@1.99.0)(yaml@2.8.3))
+      dayjs:
+        specifier: ^1.11.20
+        version: 1.11.20
       electron-updater:
         specifier: ^6.3.9
         version: 6.8.3
       element-plus:
         specifier: ^2.13.6
         version: 2.13.6(typescript@5.9.3)(vue@3.5.31(typescript@5.9.3))
+      lodash-es:
+        specifier: ^4.18.1
+        version: 4.18.1
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@5.9.3)(vue@3.5.31(typescript@5.9.3))
       pinia-plugin-persistedstate:
         specifier: ^4.7.1
         version: 4.7.1(pinia@3.0.4(typescript@5.9.3)(vue@3.5.31(typescript@5.9.3)))
+      radash:
+        specifier: ^12.1.1
+        version: 12.1.1
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
@@ -2598,6 +2607,10 @@ packages:
   quick-lru@5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
+
+  radash@12.1.1:
+    resolution: {integrity: sha512-h36JMxKRqrAxVD8201FrCpyeNuUY9Y5zZwujr20fFO77tpUtGa6EZzfKw/3WaiBX95fq7+MpsuMLNdSnORAwSA==}
+    engines: {node: '>=14.18.0'}
 
   read-binary-file-arch@1.0.6:
     resolution: {integrity: sha512-BNg9EN3DD3GsDXX7Aa8O4p92sryjkmzYYgmgTAc6CA4uGLEDzFfxOxugu21akOxpcXHiEgsYkC6nPsQvLLLmEg==}
@@ -5654,6 +5667,8 @@ snapshots:
   quansync@0.2.11: {}
 
   quick-lru@5.1.1: {}
+
+  radash@12.1.1: {}
 
   read-binary-file-arch@1.0.6:
     dependencies:
