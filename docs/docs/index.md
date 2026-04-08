@@ -2,9 +2,9 @@
 pageType: home
 
 hero:
-  name: My Site
-  text: A cool website!
-  tagline: This is the tagline
+  name: electron-vue-pro
+  text: An enterprise-grade Electron scaffolding
+  tagline: ⚡ A production-ready Electron boilerplate powered by Electron-vite, Vue3, and TypeScript, with built-in support for OpenAI, Vercel AI SDK, Element Plus UI, and Hono backend — enabling rapid development of AI-driven desktop apps.
   actions:
     - theme: brand
       text: Quick Start
