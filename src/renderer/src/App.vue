@@ -5,6 +5,7 @@ const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 </script>
 
 <template>
+  <h1 class="text-3xl font-bold underline bg-yellow-300">Hello world!</h1>
   <el-button>Default</el-button>
   <el-button type="primary">Primary</el-button>
   <el-button type="success">Success</el-button>
