@@ -2,7 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { createElectronWindow } from './windows'
-import { getSystemInfo } from './utils/modules/system'
+import { getSystemInfo } from './utils/index'
 
 // 创建主窗口
 function createWindow(): void {
