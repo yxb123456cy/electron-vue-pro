@@ -1,13 +1,56 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { DataLine, Monitor, User, Connection } from '@element-plus/icons-vue'
 
+interface SystemInfo {
+  cpu: {
+    model: string
+    cores: number
+    usage: string
+  }
+  memory: {
+    total: number
+    used: number
+    free: number
+  }
+  disk: {
+    name: string
+    size: number
+    used: number
+    usage: number
+  }[]
+  os: {
+    platform: string
+    version: string
+  }
+}
 const cardData = ref([
   { title: '总访问量', value: '1,234', icon: DataLine, color: '#ffb6c1' },
   { title: '系统状态', value: '运行中', icon: Monitor, color: '#87ceeb' },
   { title: '活跃用户', value: '89', icon: User, color: '#ffd1dc' },
   { title: 'IPC 连接', value: '正常', icon: Connection, color: '#b0e0e6' }
 ])
+
+const systemInfo = ref<SystemInfo | null>(null)
+
+onMounted(async () => {
+  if (window.api && window.api.getSystemInfo) {
+    try {
+      // 调用 preload 暴露的 API 获取系统信息
+      const info = await window.api.getSystemInfo()
+      if (info) {
+        systemInfo.value = info
+      }
+    } catch (error) {
+      console.error('Failed to get system info:', error)
+    }
+  }
+})
+
+// 辅助函数：将字节转换为 GB
+const formatBytesToGB = (bytes: number): string => {
+  return (bytes / (1024 * 1024 * 1024)).toFixed(2)
+}
 </script>
 
 <template>
@@ -34,7 +77,7 @@ const cardData = ref([
     </el-row>
 
     <el-row :gutter="20" class="chart-section">
-      <el-col :span="16">
+      <el-col :span="14">
         <el-card shadow="hover" class="chart-card">
           <template #header>
             <div class="card-header">
@@ -46,30 +89,44 @@ const cardData = ref([
           </div>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="10">
         <el-card shadow="hover" class="chart-card">
           <template #header>
             <div class="card-header">
-              <span>系统信息</span>
+              <span>系统信息 (IPC 实时获取)</span>
             </div>
           </template>
-          <div class="sys-info">
+          <div v-if="systemInfo" class="sys-info">
             <div class="info-item">
               <span class="label">操作系统:</span>
-              <span class="value">Windows_NT</span>
+              <span class="value">{{ systemInfo.os.platform }} {{ systemInfo.os.version }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">CPU 处理器:</span>
+              <span class="value">{{ systemInfo.cpu.model }} ({{ systemInfo.cpu.cores }} 核)</span>
+            </div>
+            <div class="info-item">
+              <span class="label">CPU 使用率:</span>
+              <span class="value">{{ systemInfo.cpu.usage }}%</span>
+            </div>
+            <div class="info-item">
+              <span class="label">系统内存:</span>
+              <span class="value"
+                >{{ formatBytesToGB(systemInfo.memory.used) }} GB /
+                {{ formatBytesToGB(systemInfo.memory.total) }} GB</span
+              >
             </div>
             <div class="info-item">
               <span class="label">Electron:</span>
-              <span class="value">v30.0.0</span>
+              <span class="value">v39.2.6</span>
             </div>
             <div class="info-item">
               <span class="label">Node.js:</span>
-              <span class="value">v20.x.x</span>
+              <span class="value">v22</span>
             </div>
-            <div class="info-item">
-              <span class="label">V8 引擎:</span>
-              <span class="value">v12.x.x</span>
-            </div>
+          </div>
+          <div v-else class="sys-info-loading">
+            <el-skeleton :rows="5" animated />
           </div>
         </el-card>
       </el-col>

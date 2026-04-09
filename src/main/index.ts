@@ -2,6 +2,8 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { createElectronWindow } from './windows'
+import { getSystemInfo } from './utils/modules/system'
+
 // 创建主窗口
 function createWindow(): void {
   // 创建浏览器窗口
@@ -40,6 +42,16 @@ app.whenReady().then(() => {
 
   // IPC通信测试
   ipcMain.on('ping', () => console.log('pong'))
+
+  // 监听获取系统信息的 IPC 请求
+  ipcMain.handle('get-system-info', async () => {
+    try {
+      return await getSystemInfo()
+    } catch (error) {
+      console.error('Failed to get system info:', error)
+      return null
+    }
+  })
 
   createWindow()
 
