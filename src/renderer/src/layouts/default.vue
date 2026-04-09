@@ -164,7 +164,7 @@ const handleSelect = (key: string): void => {
 
 <style scoped lang="scss">
 // use custom global scss styles variable
-@import '../assets/styles/variables.scss';
+@use '@renderer/assets/styles/variables.scss' as *;
 
 .layout-container {
   height: 100vh;

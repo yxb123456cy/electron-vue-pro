@@ -136,7 +136,7 @@ const formatBytesToGB = (bytes: number): string => {
 
 <style scoped lang="scss">
 // use custom global scss styles variable
-@import '@renderer/assets/styles/variables.scss';
+@use '@renderer/assets/styles/variables.scss' as *;
 
 .dashboard-container {
   display: flex;
