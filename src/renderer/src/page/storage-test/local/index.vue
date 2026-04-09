@@ -173,7 +173,7 @@ onMounted(() => {
               <el-button type="success" @click="getWebStorage">读取</el-button>
               <el-button type="danger" @click="deleteWebStorage">删除</el-button>
             </div>
-            <div class="result-box" v-if="webResult">
+            <div v-if="webResult" class="result-box">
               读取结果: <strong>{{ webResult }}</strong>
             </div>
           </div>
@@ -202,7 +202,7 @@ onMounted(() => {
               <el-button type="success" @click="getStore">读取</el-button>
               <el-button type="danger" @click="deleteStore">删除</el-button>
             </div>
-            <div class="result-box" v-if="storeResult">
+            <div v-if="storeResult" class="result-box">
               读取结果: <strong>{{ storeResult }}</strong>
             </div>
           </div>
@@ -269,11 +269,11 @@ onMounted(() => {
             </div>
             <div class="list-box">
               <el-table
+                v-if="sqliteList.length > 0"
                 :data="sqliteList"
                 style="width: 100%"
                 size="small"
                 height="150"
-                v-if="sqliteList.length > 0"
               >
                 <el-table-column prop="id" label="ID" width="60" />
                 <el-table-column prop="name" label="姓名" />
