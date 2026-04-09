@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { createElectronWindow } from './windows'
 import { getSystemInfo } from './utils/index'
+import log from './utils/modules/log'
 
 // 创建主窗口
 function createWindow(): void {
@@ -12,6 +13,7 @@ function createWindow(): void {
   mainWindow.on('ready-to-show', () => {
     mainWindow.maximize()
     mainWindow.show()
+    log.info('mainWindow ready-to-show')
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
