@@ -2,8 +2,9 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { createElectronWindow } from './windows'
-import { getSystemInfo } from './utils/index'
+import { getSystemInfo } from './utils/modules/system'
 import log from './utils/modules/log'
+import { setupLocalStoreIPC } from './storage/local'
 
 // 创建主窗口
 function createWindow(): void {
@@ -55,6 +56,9 @@ app.whenReady().then(() => {
       return null
     }
   })
+
+  // 注册本地存储相关的 IPC 监听
+  setupLocalStoreIPC()
 
   createWindow()
 
