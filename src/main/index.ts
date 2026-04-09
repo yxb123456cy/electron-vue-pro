@@ -10,6 +10,7 @@ function createWindow(): void {
   const mainWindow = createElectronWindow()
 
   mainWindow.on('ready-to-show', () => {
+    mainWindow.maximize()
     mainWindow.show()
   })
 
